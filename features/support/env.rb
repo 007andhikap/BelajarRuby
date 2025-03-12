@@ -17,10 +17,10 @@ options.add_argument('--remote-debugging-port=9222')
 options.add_argument("--user-data-dir=/tmp/chrome-user-data-$$") # Direktori unik
 options.add_argument('--disable-software-rasterizer') # Hindari crash rendering
 options.add_argument('--disable-background-timer-throttling') # Pastikan eksekusi JS lancar
-options.add_argument('--disable-extensions') # Mematikan ekstensi agar lebih stabil
+options.add_argument('--disable-extensions') # Matikan ekstensi agar lebih stabil
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app,browser: :chrome, timeout: 30, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, timeout: 30, options: options)
 end
 
 Capybara.configure do |config|
