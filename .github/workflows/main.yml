@@ -17,10 +17,10 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          wget -q "https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chrome-linux64.zip"
-          unzip -q chrome-linux64.zip
-          sudo mv chrome-linux64 /opt/google/chrome
-          sudo ln -s /opt/google/chrome/chrome /usr/bin/google-chrome
+          wget "https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/bin/
+          sudo chmod +x /usr/bin/chromedriver
 
       - name: Bundle Install
         run: bundle install
