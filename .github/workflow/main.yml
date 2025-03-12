@@ -1,0 +1,22 @@
+name: Cucumber Ruby Demo
+on:  [push, pull_request]
+job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+
+      - name: Chrome Install
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+
+      - name: Bundle Install
+        run: bundle install
+
+      - name: Run Cucumber Test
+        run: bundle exec cucumber
