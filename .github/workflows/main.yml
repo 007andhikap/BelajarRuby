@@ -15,13 +15,14 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Install ChromeDriver
+      - name: Install Google Chrome and ChromeDriver
         run: |
           CHROME_VERSION=134.0.6998.88
           wget -q "https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chrome-linux64.zip"
           unzip chrome-linux64.zip
           sudo mv chrome-linux64 /opt/google/chrome
-          sudo ln -sf /opt/google/chrome/chrome /usr/bin/google-chrome
+          sudo rm -f /usr/bin/google-chrome  # Hapus symbolic link lama
+          sudo ln -s /opt/google/chrome/chrome /usr/bin/google-chrome
       
           wget -q "https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip"
           unzip chromedriver-linux64.zip
@@ -30,6 +31,13 @@ jobs:
 
       - name: Bundle Install
         run: bundle install
+
+      - name: Check Chrome and ChromeDriver
+        run: |
+          which google-chrome
+          ls -lah /usr/bin/google-chrome
+          google-chrome --version
+          chromedriver --version
 
       - name: Run Cucumber Test
         run: |
