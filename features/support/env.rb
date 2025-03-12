@@ -14,6 +14,7 @@ options.add_argument('--no-sandbox') # Tambahkan opsi no-sandbox agar tidak cras
 options.add_argument('--disable-popup-blocking')
 options.add_argument('--disable-infobars')
 options.add_argument('--remote-debugging-port=9222')
+options.add_argument('--user-data-dir=/tmp/chrome-user-data') # Pastikan sesi unik
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app,browser: :chrome, timeout: 30, options: options)
