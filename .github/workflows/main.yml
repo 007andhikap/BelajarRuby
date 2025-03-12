@@ -15,38 +15,18 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Install Google Chrome and ChromeDriver
-      - run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | cut -d'.' -f1)
-          echo "Detected Chrome major version: $CHROME_VERSION"
-  
-          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-  
-          if [[ -z "$CHROMEDRIVER_VERSION" || "$CHROMEDRIVER_VERSION" == *"Error"* ]]; then
-          echo "❌ Failed to fetch ChromeDriver version for Chrome $CHROME_VERSION"
-          exit 1
-          fi
-  
-          echo "Downloading ChromeDriver version: $CHROMEDRIVER_VERSION"
-          wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+      - name: Chromedriver Install
+        run: |
+          wget "https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip"
           unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
-          rm chromedriver_linux64.zip
+          sudo mv chromedriver /usr/bin/
 
       - name: Bundle Install
         run: bundle install
-
-      - name: Check Chrome and ChromeDriver
-        run: |
-          which google-chrome
-          ls -lah /usr/bin/google-chrome
-          google-chrome --version
-          chromedriver --version
 
       - name: Run Cucumber Test
         run: |
           chrome --version
           chromedriver --version
           
-          HEADLESS=true bundle exec cucumber
+          bundle exec cucumber
