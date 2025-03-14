@@ -15,9 +15,19 @@ jobs:
         with:
           chrome-version: stable
 
+#       (untuk install chromedriver sesuai versi)
+#      - name: Chromedriver Install
+#        run:
+#          wget "https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chromedriver-linux64.zip"
+#          unzip chromedriver_linux64.zip
+#          sudo mw chromedriver /usr/bin/
 
       - name: Bundle Install
         run: bundle install
 
       - name: Run Cucumber Test
-        run: bundle exec cucumber
+        run: |
+          chrome --version
+          chromedriver --version
+          
+          HEADLESS=true bundle exec cucumber
