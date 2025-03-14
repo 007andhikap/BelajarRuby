@@ -11,11 +11,5 @@
     </content>
     <orderEntry type="jdk" jdkName="Remote: ruby-3.2.2-p53" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.7, Remote: ruby-3.2.2-p53) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.6, Remote: ruby-3.2.2-p53) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.1, Remote: ruby-3.2.2-p53) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="method_source (v1.1.0, Remote: ruby-3.2.2-p53) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, Remote: ruby-3.2.2-p53) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sys-uname (v1.3.1, Remote: ruby-3.2.2-p53) [gem]" level="application" />
   </component>
 </module>
