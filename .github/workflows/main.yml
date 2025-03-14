@@ -1,0 +1,34 @@
+name: Cucumber Ruby Demo
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+
+      - name: Chrome Install
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+
+#       (untuk install chromedriver sesuai versi)
+#      - name: Chromedriver Install
+#        run:
+#          wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chromedriver-linux64.zip
+#          unzip chromedriver-linux64.zip
+#          sudo mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
+#          sudo chmod +x /usr/bin/chromedriver
+
+      - name: Bundle Install
+        run: bundle install
+
+      - name: Run Cucumber Test
+        run: |
+          chrome --version
+          chromedriver --version
+          
+          HEADLESS=true bundle exec cucumber
