@@ -1,5 +1,4 @@
 name: Cucumber Ruby Demo
-<<<<<<< HEAD
 on: [push, pull_request]
 jobs:
   build:
@@ -9,23 +8,16 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-<<<<<<< HEAD
           ruby-version: 3.2.2
+
       - name: Chrome Install
         uses: browser-actions/setup-chrome@latest
         with:
           chrome-version: stable
 
-<<<<<<< HEAD
+
       - name: Bundle Install
         run: bundle install
 
       - name: Run Cucumber Test
-<<<<<<< HEAD
-        run: |
-          chrome --version
-          chromedriver --version
-          bundle exec cucumber
-=======
         run: bundle exec cucumber
->>>>>>> 01cc3e9 (add Github Action workflows)
